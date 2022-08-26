@@ -1,5 +1,9 @@
+import './carousel.css'
+
 export default function Carousel () {
     return (
-        <h1>The carousel component</h1>
+        <div className='carousel'>
+            <h1>The carousel component</h1>
+        </div>
     )
 }
