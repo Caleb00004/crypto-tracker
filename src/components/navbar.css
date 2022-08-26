@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@402&family=Karla:wght@200&display=swap');
+
+* {
+/*    border: 1px solid limegreen !important; */
+    font-family: 'Karla';
+    font-weight: bold;
+}
+
+nav {
+    display: inline-flex;
+    width: 100%;
+    background-color: red;
+}
+
+li {
+    list-style-type: none;
+    padding: 10px 10px;
+}
+
+.far-right {
+    display: flex;
+    margin-left: auto;
+    background-color: red;
+}
