@@ -23,9 +23,9 @@ export default function Navbar() {
             <li>Coin Tracker</li>
             <div className = {`${mode}-far-right`}>
                 <img className='nav-icon' width={'15px'} height={'20px'} src={iconImg} onClick={toggleMode}/>            
-                    <div class="dropdown">
-                        <li><button class="dropbtn" style={{color: fontColor()}}>USD<i class="fa fa-caret-down">▾</i></button></li>
-                        <div class="dropdown-content">
+                    <div className="dropdown">
+                        <li><button className="dropbtn" style={{color: fontColor()}}>USD<i className="fa fa-caret-down">▾</i></button></li>
+                        <div className="dropdown-content">
                         <li><a href="#">EUR</a></li>
                         <li><a href="#">NGN</a></li>
                         </div>

@@ -1,5 +1,12 @@
 .home-page {
     text-align: center;
     padding-top: 3%;
-    background-color: #d7d0d0;
+}
+
+hr {
+    border: 1px solid black;
+    margin-bottom: 10px;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
 }
