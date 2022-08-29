@@ -5,9 +5,11 @@ import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import './test.css'
 //const items = [...Array(33).keys()];
+
 const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,16,18];
 
 function Items({ currentItems }) {
+    console.log(currentItems)
   return (
     <div className="items">
         
@@ -25,8 +27,8 @@ function Items({ currentItems }) {
       </div>
     ))}
       </div>
-  );
-}
+  );    
+} 
 
 export default function PaginatedItems({ itemsPerPage }) {
   // We start with an empty list of items.

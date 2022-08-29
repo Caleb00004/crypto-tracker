@@ -1,59 +1,114 @@
 import './table.css'
 import { useContext } from 'react'
 import { coinContext } from '../coinContext'
+import React, { useEffect, useState } from 'react';
+import ReactPaginate from 'react-paginate';
 
-export default function Table ({coins, dataLoaded}) {
 
+/* function Table ({coins, dataLoaded, currentItems}) {
     const {mode} = useContext(coinContext)
-
-//    console.log(dataLoaded)
     dataLoaded && console.log(coins)
 
+} */
 
-    if (dataLoaded) {
-
-        function sign(number) {
-            if (number > 0) {
-                return {color: 'green'}
-            } else if (number < 0){
-                return {color: 'red'}
-            }
+const Items = ({ currentItems, mode }) => {
+    
+    console.log(currentItems)
+    function sign(number) {
+        if (number > 0) {
+            return {color: 'green'}
+        } else if (number < 0){
+            return {color: 'red'}
         }
-
-        const coinElements = coins.map(({image, symbol, current_price, price_change_percentage_24h, market_cap}, i) => (
-            <tbody className={`${mode}-table-body`} key={i}>
-                <tr>
-                    <td className='img-row'><span className='number'>{i+1}</span> <img className='coin-icon' width={'25px'} src={image}/> <span className='coin-acronym'>{symbol.toUpperCase()}</span></td>
-                    <td>${current_price.toLocaleString("en-US")}</td>
-                    <td style={sign(price_change_percentage_24h)}>
-                        {price_change_percentage_24h > 0 ? `+${price_change_percentage_24h.toFixed(2)}% ` : `${price_change_percentage_24h.toFixed(2)}%`} 
-                    </td>
-                    <td>${market_cap.toLocaleString('en-US')}</td>
-                </tr> 
-            </tbody>
-/*            <div>
-                <p>{i+1} <img width={'30px'} src={image}/> {id} {current_price} {high_24h} {market_cap}</p>
-            </div> */
-        ))
-        return (
-            <div className='table-component'>
-                <h1>The Table component</h1>
-                <table className={`${mode}-table`}>
-                    <tbody>
-                        <tr>
-                            <th>Coin</th>
-                            <th>Price</th>
-                            <th>24h Change</th>
-                            <th>Market Cap</th>
-                        </tr>
-                    </tbody>
-                        {coinElements}
-                </table>
-            </div>
-        )
-    } else {
-        return (
-            <h1>THe Table Component</h1>
-        )
     }
+
+    const coinElements = currentItems && currentItems.map(({image, symbol, current_price, price_change_percentage_24h, market_cap, market_cap_rank, id}) => (
+        <tbody className={`${mode}-table-body`} key={id}>
+            <tr>
+                <td className='img-row'><span className='number'>{market_cap_rank}</span> <img className='coin-icon' width={'25px'} src={image}/> <span className='coin-acronym'>{symbol.toUpperCase()}</span></td>
+                <td>${current_price.toLocaleString("en-US")}</td>
+                <td style={sign(price_change_percentage_24h)}>
+                    {price_change_percentage_24h > 0 ? `+${price_change_percentage_24h.toFixed(2)}% ` : `${price_change_percentage_24h.toFixed(2)}%`} 
+                </td>
+                <td>${market_cap.toLocaleString('en-US')}</td>
+            </tr> 
+        </tbody>
+    ))
+    
+    return (
+        <div className='table-component'>
+            <h1>The Table component</h1>
+            <table className={`${mode}-table`}>
+                <tbody>
+                    <tr>
+                        <th>Coin</th>
+                        <th>Price</th>
+                        <th>24h Change</th>
+                        <th>Market Cap</th>
+                    </tr>
+                </tbody>
+                    {coinElements}
+            </table>
+        </div>
+    )
+}          
+
+
+export default function PaginatedItems({ itemsPerPage }) {
+    const {mode, coinData} = useContext(coinContext)
+    
+        // We start with an empty list of items.
+        console.log(itemsPerPage)
+        const [currentItems, setCurrentItems] = useState(null);
+        const [pageCount, setPageCount] = useState(0);
+        // Here we use item offsets; we could also use page offsets
+        // following the API or data you're working with.
+        const [itemOffset, setItemOffset] = useState(0);
+
+        useEffect(() => {
+            console.log('useEffect ran')
+            // Fetch items from another resources.
+            const endOffset = itemOffset + itemsPerPage;
+            console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+            setCurrentItems(coinData.slice(itemOffset, endOffset));
+            setPageCount(Math.ceil(coinData.length / itemsPerPage));
+            console.log(currentItems)
+        }, [itemOffset, itemsPerPage]);
+
+        console.log(coinData)
+
+        // Invoke when user click to request another page.
+        const handlePageClick = (event) => {
+        const newOffset = event.selected * itemsPerPage % coinData.length;
+        console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
+        setItemOffset(newOffset);
+        };
+
+        return (
+        <>
+            <Items currentItems={currentItems} mode={mode} />
+            <ReactPaginate
+            nextLabel="next >"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={3}
+            marginPagesDisplayed={2}
+            pageCount={pageCount}
+            previousLabel="< previous"
+            pageClassName="page-item"
+            pageLinkClassName="page-link"
+            previousClassName="page-item"
+            previousLinkClassName="previous-link"
+            nextClassName="page-item"
+            nextLinkClassName="next-link"
+            breakLabel="..."
+            breakClassName="page-item"
+            breakLinkClassName="page-link"
+            containerClassName="pagination"
+            activeClassName="active"
+            renderOnZeroPageCount={null}
+            />
+        </>
+        );
+
 }
+    

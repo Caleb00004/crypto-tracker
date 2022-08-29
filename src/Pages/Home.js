@@ -1,5 +1,6 @@
 import Carousel from '../components/Carousel'
-import Table from '../components/Table'
+//import Table from '../components/Table'
+import PaginatedItems from '../components/Table'
 import { useContext } from 'react'
 import { coinContext } from '../coinContext'
 import './home.css'
@@ -17,7 +18,8 @@ export default function Home() {
             <Carousel />
             <br />
             <h3>Prices By Market</h3>
-            <Table coins={coinData} dataLoaded = {dataLoaded}/>
+            {/* <Table coins={coinData} dataLoaded = {dataLoaded} currentItems={10}/> */}
+            {dataLoaded && <PaginatedItems itemsPerPage={10}/>}
         </div>
 
     )

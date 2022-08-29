@@ -21,7 +21,7 @@ export default function Navbar() {
     }
     return (
         <nav className={`${mode}-nav`}>
-            <li ><Link  className={`${mode}-Header-nav`} to = '/'>Coin Tracker</Link></li>
+            <li><Link  className={`${mode}-Header-nav`} to = '/'>Coin Tracker</Link></li>
             <div className = {`${mode}-far-right`}>
                 <img className='nav-icon' width={'15px'} height={'20px'} src={iconImg} onClick={toggleMode}/>            
                     <div className="dropdown">
