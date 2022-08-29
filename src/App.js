@@ -1,10 +1,12 @@
 import './App.css';
 import Coin from './Pages/Coin';
 import Home from './Pages/Home';
+//import PaginatedItems from './Pages/PaginatedItems';
 import Navbar from './components/Navbar';
 import {Routes, Route} from 'react-router-dom'
 import { useContext } from 'react'
 import { coinContext } from './coinContext'
+import PaginatedItems from './Pages/paginateTest';
 
 //import {ContextProvider} from './coinContext'
 
@@ -34,6 +36,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/coin' element={<Coin />} />
+          <Route path='/paginate' element={<PaginatedItems itemsPerPage={5}/>} />
         </Routes>
 
     </div>

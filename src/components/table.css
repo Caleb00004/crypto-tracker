@@ -4,20 +4,44 @@
 
 table {
     width: 100%;
+    font-size: clamp(0.7rem, 1.3vw, 1.4vw); 
 }
 
 tr,th,td {
     padding: 15px;
 }
 
+
+
+.img-row {
+    text-align: left;
+    display: flex;
+    border: none;
+}
+
+span {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.number {
+    padding-right: 10px;
+}
+
+.coin-acronym {
+    padding-left: 5%;
+}
+
 .light-table {
+    border: 1px solid grey; 
     border-collapse: collapse;
 }
 
 .light-table > tbody > tr > th{
-    color: red;
-    border: 1px solid;
-
+/*    border: 1px solid; */
+    border-bottom-style: solid;
+    border-bottom-width: 0.5px;
+    border-bottom-color: grey;
 }
 /*
 .light-table-body > tr > th, td{
@@ -43,30 +67,19 @@ tr,th,td {
 .light-table-body > tr:hover {background-color: #ddd;}
 .dark-table-body > tr:hover {background-color: rgb(69, 66, 66);}
 
-.img-row {
-    text-align: left;
-    display: flex;
-    border: none;
-}
-
-span {
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-.number {
-    padding-right: 10px;
-}
-
-.coin-acronym {
-    padding-left: 5%;
-}
-
 
 /* tr:nth-child(odd){background-color: #f2f2f2;} */
 .light-table-body:nth-child(even), tr:nth-child(even) {
     background-color: #f2f2f2;;
 }
 
-
+@media screen and (max-width: 600px) {
+    th, tr, td {
+        padding: 13px;
+    }
+    
+    .coin-icon {
+        width: 15px;
+    }
+}
 

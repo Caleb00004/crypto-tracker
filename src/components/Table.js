@@ -9,18 +9,30 @@ export default function Table ({coins, dataLoaded}) {
 //    console.log(dataLoaded)
     dataLoaded && console.log(coins)
 
+
     if (dataLoaded) {
-        const coinElements = coins.map((coinItem, i) => (
+
+        function sign(number) {
+            if (number > 0) {
+                return {color: 'green'}
+            } else if (number < 0){
+                return {color: 'red'}
+            }
+        }
+
+        const coinElements = coins.map(({image, symbol, current_price, price_change_percentage_24h, market_cap}, i) => (
             <tbody className={`${mode}-table-body`} key={i}>
                 <tr>
-                    <td className='img-row'><span className='number'>{i+1}</span> <img width={'30px'} src={coinItem.image}/> <span className='coin-acronym'>{coinItem.symbol.toUpperCase()}</span></td>
-                    <td>${coinItem.current_price.toLocaleString("en-US")}</td>
-                    <td>{coinItem.high_24h}</td>
-                    <td>${coinItem.market_cap.toLocaleString('en-US')}</td>
-                </tr>
+                    <td className='img-row'><span className='number'>{i+1}</span> <img className='coin-icon' width={'25px'} src={image}/> <span className='coin-acronym'>{symbol.toUpperCase()}</span></td>
+                    <td>${current_price.toLocaleString("en-US")}</td>
+                    <td style={sign(price_change_percentage_24h)}>
+                        {price_change_percentage_24h > 0 ? `+${price_change_percentage_24h.toFixed(2)}% ` : `${price_change_percentage_24h.toFixed(2)}%`} 
+                    </td>
+                    <td>${market_cap.toLocaleString('en-US')}</td>
+                </tr> 
             </tbody>
 /*            <div>
-                <p>{i+1} <img width={'30px'} src={coinItem.image}/> {coinItem.id} {coinItem.current_price} {coinItem.high_24h} {coinItem.market_cap}</p>
+                <p>{i+1} <img width={'30px'} src={image}/> {id} {current_price} {high_24h} {market_cap}</p>
             </div> */
         ))
         return (
