@@ -3,6 +3,7 @@ import moonfill from '../icons/moon-fill.png'
 import sunline from '../icons/sun-line.png'
 import { useContext } from 'react'
 import { coinContext } from '../coinContext'
+import {Link} from 'react-router-dom'
 
 export default function Navbar() {
     const {mode, toggleMode} = useContext(coinContext)
@@ -20,7 +21,7 @@ export default function Navbar() {
     }
     return (
         <nav className={`${mode}-nav`}>
-            <li>Coin Tracker</li>
+            <li ><Link  className={`${mode}-Header-nav`} to = '/'>Coin Tracker</Link></li>
             <div className = {`${mode}-far-right`}>
                 <img className='nav-icon' width={'15px'} height={'20px'} src={iconImg} onClick={toggleMode}/>            
                     <div className="dropdown">

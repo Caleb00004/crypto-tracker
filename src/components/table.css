@@ -1,9 +1,72 @@
+.table-component {
+    padding: 3%;
+}
+
 table {
     width: 100%;
+}
+
+tr,th,td {
+    padding: 15px;
+}
+
+.light-table {
     border-collapse: collapse;
 }
 
-tr, th, td{
+.light-table > tbody > tr > th{
+    color: red;
     border: 1px solid;
-    padding: 5px;
+
 }
+/*
+.light-table-body > tr > th, td{
+    border: 1px solid;
+    padding: 10px;
+}
+*/
+
+.dark-table {
+    border-collapse: collapse;
+}
+.dark-table > tbody > tr > th {
+    background-color: #232222; 
+    border: none;
+}
+
+.dark-table-body > tr > td {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(74, 72, 72);
+}
+
+.light-table-body > tr:hover {background-color: #ddd;}
+.dark-table-body > tr:hover {background-color: rgb(69, 66, 66);}
+
+.img-row {
+    text-align: left;
+    display: flex;
+    border: none;
+}
+
+span {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.number {
+    padding-right: 10px;
+}
+
+.coin-acronym {
+    padding-left: 5%;
+}
+
+
+/* tr:nth-child(odd){background-color: #f2f2f2;} */
+.light-table-body:nth-child(even), tr:nth-child(even) {
+    background-color: #f2f2f2;;
+}
+
+
+
