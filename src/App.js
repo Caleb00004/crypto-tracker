@@ -9,6 +9,7 @@ import { coinContext } from './coinContext'
 import PaginatedItems from './Pages/paginateTest';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import InvalidPath from './utils/InvalidPath';
 
 //import {ContextProvider} from './coinContext'
 
@@ -37,8 +38,9 @@ function App() {
 
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/coin' element={<Coin />} />
+          <Route path='/coin/:coinId' element={<Coin />} />
           <Route path='/paginate' element={<PaginatedItems itemsPerPage={5}/>} />
+          <Route path='*' element={<InvalidPath />}/> {/* To handle paths that don't exist */}
         </Routes>
 
     </div>
