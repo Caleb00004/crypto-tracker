@@ -7,6 +7,8 @@ import {Routes, Route} from 'react-router-dom'
 import { useContext } from 'react'
 import { coinContext } from './coinContext'
 import PaginatedItems from './Pages/paginateTest';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 //import {ContextProvider} from './coinContext'
 

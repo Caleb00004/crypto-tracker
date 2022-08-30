@@ -13,7 +13,7 @@ import ReactPaginate from 'react-paginate';
 
 const Items = ({ currentItems, mode }) => {
     
-    console.log(currentItems)
+//    console.log(currentItems)
     function sign(number) {
         if (number > 0) {
             return {color: 'green'}
@@ -37,7 +37,6 @@ const Items = ({ currentItems, mode }) => {
     
     return (
         <div className='table-component'>
-            <h1>The Table component</h1>
             <table className={`${mode}-table`}>
                 <tbody>
                     <tr>
@@ -66,7 +65,7 @@ export default function PaginatedItems({ itemsPerPage }) {
         const [itemOffset, setItemOffset] = useState(0);
 
         useEffect(() => {
-            console.log('useEffect ran')
+//            console.log('useEffect ran')
             // Fetch items from another resources.
             const endOffset = itemOffset + itemsPerPage;
             console.log(`Loading items from ${itemOffset} to ${endOffset}`);
@@ -90,8 +89,8 @@ export default function PaginatedItems({ itemsPerPage }) {
             <ReactPaginate
             nextLabel="next >"
             onPageChange={handlePageClick}
-            pageRangeDisplayed={3}
-            marginPagesDisplayed={2}
+            pageRangeDisplayed={1}
+            marginPagesDisplayed={1}
             pageCount={pageCount}
             previousLabel="< previous"
             pageClassName="page-item"

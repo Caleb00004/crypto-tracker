@@ -6,18 +6,18 @@ import { coinContext } from '../coinContext'
 import './home.css'
 
 export default function Home() {
-    const {coinData, dataLoaded} = useContext(coinContext)
+    const {coinData, dataLoaded, mode} = useContext(coinContext)
 
     console.log('HOME')
 //    console.log(coinData)
 
     return (
         <div /* style={{backgroundColor: backgroundColor(), color: fontColor()}} */ className='home-page'>
-            <h1>Crypto Tracker App</h1>
-            <hr />
-            <Carousel />
+            <h1 className={`${mode}-h1`}>Crypto Tracker App</h1>
+            {/* <hr /> */}
+            {dataLoaded && <Carousel />}
             <br />
-            <h3>Prices By Market</h3>
+            <h1>Prices ranked by <br />Market Cap</h1>
             {/* <Table coins={coinData} dataLoaded = {dataLoaded} currentItems={10}/> */}
             {dataLoaded && <PaginatedItems itemsPerPage={10}/>}
         </div>
