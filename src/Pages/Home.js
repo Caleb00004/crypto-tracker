@@ -15,11 +15,11 @@ export default function Home() {
         <div /* style={{backgroundColor: backgroundColor(), color: fontColor()}} */ className='home-page'>
             <h1 className={`${mode}-h1`}>Crypto Tracker App</h1>
             {/* <hr /> */}
-            {dataLoaded && <Carousel />}
+            {dataLoaded ? <Carousel /> : <h1>Loading...</h1>}
             <br />
             <h1>Prices ranked by <br />Market Cap</h1>
             {/* <Table coins={coinData} dataLoaded = {dataLoaded} currentItems={10}/> */}
-            {dataLoaded && <PaginatedItems itemsPerPage={10}/>}
+            {dataLoaded ? <PaginatedItems itemsPerPage={10}/> : <h2>Loading Tables...</h2>}
         </div>
 
     )

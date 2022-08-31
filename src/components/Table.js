@@ -6,12 +6,6 @@ import ReactPaginate from 'react-paginate';
 import { useNavigate } from 'react-router';
 
 
-/* function Table ({coins, dataLoaded, currentItems}) {
-    const {mode} = useContext(coinContext)
-    dataLoaded && console.log(coins)
-
-} */
-
 const Items = ({ currentItems, mode }) => {
     
     const navigateTo = useNavigate()
@@ -26,7 +20,7 @@ const Items = ({ currentItems, mode }) => {
 
     const coinElements = currentItems && currentItems.map(({image, symbol, current_price, price_change_percentage_24h, market_cap, market_cap_rank, id}) => (
         <tbody className={`${mode}-table-body`} key={id}>
-            <tr onClick={() => navigateTo('/coin')}>
+            <tr onClick={() => navigateTo(`/coin/${id}`)}>
                 <td className='img-row'><span className='number'>{market_cap_rank}</span> <img className='coin-icon' width={'25px'} src={image}/> <span className='coin-acronym'>{symbol.toUpperCase()}</span></td>
                 <td>${current_price.toLocaleString("en-US")}</td>
                 <td style={sign(price_change_percentage_24h)}>
