@@ -14,6 +14,9 @@
     margin-right: auto;
     padding: 1%;
 } 
+.previous-link, .next-link {
+    cursor: pointer;
+}
 
 .page-link {
 /*    background-color: blue;  */

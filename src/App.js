@@ -1,5 +1,5 @@
 import './App.css';
-import Coin from './Pages/Coin';
+import CoinPage from './Pages/CoinPage';
 import Home from './Pages/Home';
 //import PaginatedItems from './Pages/PaginatedItems';
 import Navbar from './components/Navbar';
@@ -58,7 +58,7 @@ function App() {
 
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/coin/:coinId' element={<Coin />} />
+          <Route path='/coin/:coinId' element={<CoinPage />} />
           <Route path='/paginate' element={<PaginatedItems itemsPerPage={5}/>} />
           <Route path='*' element={<InvalidPath />}/> {/* To handle paths that don't exist */}
         </Routes>

@@ -1,0 +1,16 @@
+.coin-page {
+    text-align: center;
+}
+
+.coinPage-header {
+    display: inline-flex;
+    margin-bottom: 20px;
+}
+
+.coin-page > img {
+    width: 20%;
+    min-height: 100px;
+    min-width: 100px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
