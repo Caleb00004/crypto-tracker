@@ -1,0 +1,57 @@
+// react-chartjs-2 is [A wrapper for Chart js that exist in react.]  -- makes implementing chartjs easier in react.
+
+// creating a Bar chart
+// import Bar from 'react-chartjs-2'
+// different props but we will focus on 'data' and 'options' props
+
+
+/*
+//    let sparkline = ["19812.754997245192","19849.91168772204","19998.006080986233","20281.502861971527","20314.587356831926","20310.292922789653","20269.025887581625","20251.10786445862","20235.508750308054","20229.836148379607","20235.01649752613","20300.19968905233","20335.833177433244","20318.256618482235","20299.984104288764","20293.87325461883","20012.68254733698","19985.958580497016","19975.726408289156","19928.343337847014","19903.372477113615","20091.431150856595","20102.54237233771","20104.204192710396","20064.784590861873"]
+    // i am storing my chart Data in a state. (not compulsory tho, you can just place it directly as props in the 'chart' component)
+//    console.log(sparkline.length)
+    let testTime = []
+    for (let i = 0; i <= 24; i++) {
+        testTime.push(`${i}.0`)
+    }
+
+    console.log(testTime)
+    const [chartData, setChartData] = React.useState({
+//        labels: UserData.map(item => item.year),
+//        labels: ['2.1','2.1','2.1','2.1','2.1','2.1','2.1','2.1','2.1','2.1','2.1','2.1'],
+        labels: testTime,
+        datasets: [{
+            label: 'Users Gained',
+            data: sparkline,
+//            data: UserData.map(item => item.userGain),
+            backgroundColor: 'black',
+            borderColor: 'blue'
+
+        }]
+    }) 
+*/  
+
+//The chart.js requires it data in from of an object. with a 'labels' and 'dataSets' property.
+/*
+    LABELS is like what represents each point in a chart 
+    DATASETS; is an array
+*/
+
+/*    const [userData, setUserData] = React.useState({
+        labels: '[2015,2016,2026,2047,2037]',
+        datasets: [
+          {
+            label: "Users Gained",
+            data: UserData.map((data) => data.userGain),
+            backgroundColor: [
+              "rgba(75,192,192,1)",
+              "#ecf0f1",
+              "#50AF95",
+              "#f3ba2f",
+              "#2a71d0",
+            ],
+            borderColor: "black",
+            borderWidth: 2,
+          },
+        ],
+      }); 
+*/
