@@ -24,7 +24,7 @@ export default function CoinPage() {
                 <br />
                 <Chart mode={mode} coinId={coinId}/>
                 <br />
-                <CoinDetails />
+                <CoinDetails mode={mode} coin={coin[0]}/>
              </div>
         )
     } else {

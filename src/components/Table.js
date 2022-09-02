@@ -18,6 +18,17 @@ const Items = ({ currentItems, mode }) => {
         }
     }
 
+    // properties to pull out from the currentItems object to be passed.
+/*    const item = {
+        id,
+        image,
+        symbol, 
+        current_price,
+        price_change_percentage_24h,
+        market_cap,
+        market_cap_rank        
+    } */
+
     const coinElements = currentItems && currentItems.map(({image, symbol, current_price, price_change_percentage_24h, market_cap, market_cap_rank, id}) => (
         <tbody className={`${mode}-table-body`} key={id}>
             <tr onClick={() => navigateTo(`/coin/${id}`)}>
@@ -74,10 +85,13 @@ export default function PaginatedItems({ itemsPerPage }) {
 
         // Invoke when user click to request another page.
         const handlePageClick = (event) => {
-        const newOffset = event.selected * itemsPerPage % coinData.length;
-        console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
-        setItemOffset(newOffset);
-        };
+//            console.log(`eer ${10 % 100}`)
+//        console.log(` ert${event.selected * itemsPerPage % coinData.length}`)
+        const newOffset = event.selected * 10;
+//        const newOffset = event.selected + 1;
+//        console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
+        setItemOffset(newOffset); 
+        }; 
 
         return (
         <>

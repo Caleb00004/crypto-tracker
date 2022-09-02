@@ -12,8 +12,6 @@ import "slick-carousel/slick/slick-theme.css";
 import InvalidPath from './utils/InvalidPath';
 import { createGlobalStyle } from 'styled-components'
 
-//import {ContextProvider} from './coinContext'
-
 function App() {
   const {mode} = useContext(coinContext)
 
@@ -22,25 +20,15 @@ function App() {
   if (mode === 'light') {
     GlobalStyles = createGlobalStyle`    
     html {
-      --backColor: white
+      --backgroundcolor: white
     }
   `
   } else {
     GlobalStyles = createGlobalStyle`    
     html {
-      --backColor: #191717
+      --backgroundcolor: #191717
     }
   ` 
-  }
-
-  // Delete this background_color function. 
-  // The styled components already takes care of everything.
-  function backgroundColor() {
-    if (mode === 'light') {
-        return 'white'
-    } else {
-        return '#191717'
-    }
   }
   
   function fontColor() {
@@ -52,7 +40,7 @@ function App() {
 }
 
   return (
-    <div style={{backgroundColor: backgroundColor(), color: fontColor()}} className="App">
+    <div style={{color: fontColor()}} className="App">
         <GlobalStyles />
         <Navbar />
 

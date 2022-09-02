@@ -39,7 +39,8 @@ export default function Chart ({mode, coinId}) {
                     datasets: [{
                         label: `${coinId} Chart`,
                         data: graphData.map(dataItem => dataItem[1]),
-                        borderColor: chartColor()
+                        borderColor: chartColor(),
+                        pointRadius: 0
         
                     }]
                 }

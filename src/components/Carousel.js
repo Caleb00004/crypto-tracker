@@ -7,17 +7,36 @@ import './carousel.css'
 export default function Carousel() {
     const {coinData, mode} = useContext(coinContext)
 
+    function sign(number) {
+      if (number > 0) {
+          return {color: 'green'}
+      } else if (number < 0){
+          return {color: 'red'}
+      }
+    }
+
     let imgLinks = []
 
     for (let i = 0; i <= 10; i++) {
         //console.log(coinData[i])
-        imgLinks.push(coinData[i].image)
+        imgLinks.push({
+            img: coinData[i].image,
+            name: coinData[i].symbol,
+            change: coinData[i].price_change_percentage_24h,
+            price: coinData[i].current_price})
     }
   
 
     const carouselmg = imgLinks.map(imgItem => (
     <div className='carousel-cell'>
-        <img width={'35%'} src={imgItem}/>
+        <img width={'35%'} src={imgItem.img}/>
+        <p>
+          {imgItem.name.toUpperCase()}
+          <span style={sign(imgItem.change)}>
+            {imgItem.change > 0 ? ` +${imgItem.change.toFixed(2)}%` : ` ${imgItem.change.toFixed(2)}%`}
+          </span>
+        </p>
+        <p>${imgItem.price.toLocaleString('en-US')}</p>
     </div>
     ))
         

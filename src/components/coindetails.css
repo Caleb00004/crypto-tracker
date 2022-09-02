@@ -1,0 +1,33 @@
+.light {
+    color: blue;
+}
+
+.dark {
+    color: green;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    margin: 3% 3%;
+    grid-row-gap: 20px 
+}
+
+.grid-container > p {
+    background-color: blue;
+    margin-right: 1px; 
+    text-align: left;
+}
+
+
+.grid-item {
+    text-align: left;
+}
+
+.grid-header {
+    padding-bottom: 10px;    
+}
+
+.grid-item > P {
+    font-size: clamp(0.7rem, 1.3vw, 1.3rem); 
+}
