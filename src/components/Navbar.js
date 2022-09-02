@@ -6,7 +6,7 @@ import { coinContext } from '../coinContext'
 import {Link} from 'react-router-dom'
 
 export default function Navbar() {
-    const {mode, toggleMode} = useContext(coinContext)
+    const {mode, toggleMode, changeCurrency} = useContext(coinContext)
     
     let iconImg = ''
     mode == 'light' ? iconImg = moonfill : iconImg = sunline
@@ -28,7 +28,7 @@ export default function Navbar() {
                         <li><button className="dropbtn" style={{color: fontColor()}}>USD<i className="fa fa-caret-down">▾</i></button></li>
                         <div className="dropdown-content">
                         <li><a href="#">EUR</a></li>
-                        <li><a href="#">NGN</a></li>
+                        <li onClick={() => changeCurrency('NGN')}><a href="#">NGN</a></li>
                         </div>
                     </div>
 

@@ -16,7 +16,7 @@ export default function Home() {
             {dataLoaded ? <Carousel /> : <LoadingSpinner/>}
             <br />
             <h1>Prices ranked by Market Cap</h1>
-            {dataLoaded ? <PaginatedItems itemsPerPage={10}/> : <LoadingSpinner />}
+            {dataLoaded ? <PaginatedItems itemsPerPage={10} mode = {mode} coinData={coinData}/> : <LoadingSpinner />}
         </div>
 
     )

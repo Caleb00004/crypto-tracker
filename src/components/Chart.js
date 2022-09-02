@@ -35,20 +35,21 @@ export default function Chart ({mode, coinId}) {
                             : `${date.getHours()}:${date.getMinutes()} AM`;
                         return days === 1 ? time : date.toLocaleDateString();
                       }),
-        
+                    
                     datasets: [{
                         label: `${coinId} Chart`,
                         data: graphData.map(dataItem => dataItem[1]),
                         borderColor: chartColor(),
-                        pointRadius: 0
-        
-                    }]
+                        pointRadius: 0,
+                    }],
+
+
                 }
         
                 return (
-                    <>
+                    <div style={{paddingLeft: '15px', paddingRight: '15px'}}>
                         <Line data={chartData} /> 
-                    </>
+                    </div>
                 )
         } else {
             return <LoadingSpinner />

@@ -1,31 +1,24 @@
-.light {
-    color: blue;
-}
-
-.dark {
-    color: green;
-}
-
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto auto;
     margin: 3% 3%;
-    grid-row-gap: 20px 
+    grid-row-gap: 20px
 }
-
-.grid-container > p {
-    background-color: blue;
-    margin-right: 1px; 
-    text-align: left;
-}
-
 
 .grid-item {
     text-align: left;
 }
 
-.grid-header {
+.grid-header-light, .grid-header-dark {
     padding-bottom: 10px;    
+}
+
+.grid-header-dark {
+    color: green;
+}
+
+.grid-header-light {
+    color: blue;
 }
 
 .grid-item > P {
