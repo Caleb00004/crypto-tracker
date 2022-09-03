@@ -9,7 +9,7 @@ import './coinpage.css'
 export default function CoinPage() {
 
     const {coinId} = useParams()
-    const {coinData, mode, dataLoaded} = useContext(coinContext)
+    const {coinData, mode, dataLoaded, currency} = useContext(coinContext)
 
     if (dataLoaded) {
         const coin = coinData.filter(data => data.id == coinId)
@@ -24,7 +24,7 @@ export default function CoinPage() {
                 <br />
                 <Chart mode={mode} coinId={coinId}/>
                 <br />
-                <CoinDetails mode={mode} coin={coin[0]}/>
+                <CoinDetails mode={mode} coin={coin[0]} currency={currency}/>
              </div>
         )
     } else {

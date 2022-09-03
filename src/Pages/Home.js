@@ -7,17 +7,16 @@ import LoadingSpinner from '../utils/LoadingSpinner'
 import './home.css'
 
 export default function Home() {
-    const {coinData, dataLoaded, mode} = useContext(coinContext) 
+    const {coinData, dataLoaded, mode, currency} = useContext(coinContext) 
     console.log('HOME')
 
     return (
         <div className='home-page'>
             <h1 className={`${mode}-h1`}>Crypto Tracker App</h1>
-            {dataLoaded ? <Carousel /> : <LoadingSpinner/>}
+            {dataLoaded ? <Carousel coinData={coinData} mode={mode} currency={currency}/> : <LoadingSpinner/>}
             <br />
             <h1>Prices ranked by Market Cap</h1>
             {dataLoaded ? <PaginatedItems itemsPerPage={10} mode = {mode} coinData={coinData}/> : <LoadingSpinner />}
         </div>
-
     )
 }

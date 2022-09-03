@@ -1,6 +1,6 @@
 import './coindetails.css'
 
-export default function CoinDetails ({coin, mode}) {
+export default function CoinDetails ({coin, mode, currency}) {
 
     return (
         <div className="coin-details">
