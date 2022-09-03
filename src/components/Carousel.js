@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 import './carousel.css'
+import { currencySymbol } from "../functions/currencySymbol";
 
 export default function Carousel({coinData, mode, currency}) {
 
-    // Variable to determine the currency symbol based off current currency state.
-    const currencySymbol = (currency == 'USD') ? '$' : (currency == 'EUR') ? '€' : '₦'
-    
     function sign(number) {
       if (number > 0) {
           return {color: 'green'}
@@ -36,7 +34,7 @@ export default function Carousel({coinData, mode, currency}) {
             {imgItem.change > 0 ? ` +${imgItem.change.toFixed(2)}%` : ` ${imgItem.change.toFixed(2)}%`}
           </span>
         </p>
-        <p>{currencySymbol}{imgItem.price.toLocaleString('en-US')}</p>
+        <p>{currencySymbol(currency)}{imgItem.price.toLocaleString('en-US')}</p>
     </div>
     ))
         

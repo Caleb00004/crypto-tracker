@@ -1,3 +1,4 @@
+import { currencySymbol } from '../functions/currencySymbol'
 import './coindetails.css'
 
 export default function CoinDetails ({coin, mode, currency}) {
@@ -9,23 +10,23 @@ export default function CoinDetails ({coin, mode, currency}) {
             <div className="grid-container">
                 <div className='grid-item'>
                     <p className={`grid-header-${mode}`}>Market Cap: </p>
-                    <p>{coin.market_cap.toLocaleString("en-US")}</p>
+                    <p>{currencySymbol(currency)}{coin.market_cap.toLocaleString("en-US")}</p>
                 </div>
                 <div className='grid-item'>
                     <p className={`grid-header-${mode}`}>Market Cap Rank: </p>
-                    <p>#{coin.market_cap_rank}</p>
+                    <p># {coin.market_cap_rank}</p>
                 </div> 
                 <div className='grid-item'>
                     <p className={`grid-header-${mode}`}>Current Price: </p>
-                    <p>{coin.current_price.toLocaleString("en-US")}</p>
+                    <p>{currencySymbol(currency)}{coin.current_price.toLocaleString("en-US")}</p>
                 </div>
                 <div className='grid-item'>
                     <p className={`grid-header-${mode}`}>All time low: </p>
-                    <p>{coin.atl.toLocaleString("en-US")}</p>
+                    <p>{currencySymbol(currency)}{coin.atl.toLocaleString("en-US")}</p>
                 </div>
                 <div className='grid-item'>
                     <p className={`grid-header-${mode}`}>All time high </p>
-                    <p>{coin.ath.toLocaleString("en-US")}</p>
+                    <p>{currencySymbol(currency)}{coin.ath.toLocaleString("en-US")}</p>
                 </div>
                 <div className='grid-item'>
                     <p className={`grid-header-${mode}`}>Total Volume </p>
@@ -33,11 +34,11 @@ export default function CoinDetails ({coin, mode, currency}) {
                 </div>
                 <div className='grid-item'>
                     <p className={`grid-header-${mode}`}>High 24h: </p>
-                    <p>{coin.high_24h}</p>
+                    <p>{currencySymbol(currency)} {coin.high_24h}</p>
                 </div>
                 <div className='grid-item'>
                     <p className={`grid-header-${mode}`}>Low 24h:</p>
-                    <p>{coin.low_24h}</p>
+                    <p>{currencySymbol(currency)} {coin.low_24h}</p>
                 </div>
 
             </div>
