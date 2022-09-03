@@ -19,8 +19,8 @@ function ContextProvider(props) {
 
     React.useEffect(() => {
 //        fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=100&page=1&sparkline=false')
-        console.log('useEffect ran')
-        console.log(currency)
+//        console.log('useEffect ran')
+//        console.log(currency)
         fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=100&page=1&sparkline=false`)
             .then(response => response.json())
             .then(data => (
@@ -30,7 +30,7 @@ function ContextProvider(props) {
             .catch(err => console.error(err));
     },[currency])
 
-    console.log(coinData)
+//    console.log(coinData)
     
     return (
         <coinContext.Provider value={{coinData, dataLoaded, mode, toggleMode, currency, changeCurrency}}>

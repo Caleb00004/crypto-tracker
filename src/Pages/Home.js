@@ -15,8 +15,8 @@ export default function Home() {
             <h1 className={`${mode}-h1`}>Crypto Tracker App</h1>
             {dataLoaded ? <Carousel coinData={coinData} mode={mode} currency={currency}/> : <LoadingSpinner/>}
             <br />
-            <h1>Prices ranked by Market Cap</h1>
-            {dataLoaded ? <PaginatedItems itemsPerPage={10} mode = {mode} coinData={coinData}/> : <LoadingSpinner />}
+            <h1>Coins Ranked By Market Cap</h1>
+            {dataLoaded ? <PaginatedItems itemsPerPage={10} mode = {mode} currentItems={coinData} currency={currency}/> : <LoadingSpinner />}
         </div>
     )
 }
