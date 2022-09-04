@@ -24,7 +24,7 @@ export default function Carousel({coinData, mode, currency}) {
             price: coinData[i].current_price})
     }
   
-
+    
     const carouselmg = imgLinks.map(imgItem => (
     <div className='carousel-cell'>
         <img width={'35%'} src={imgItem.img}/>
@@ -34,7 +34,7 @@ export default function Carousel({coinData, mode, currency}) {
             {imgItem.change > 0 ? ` +${imgItem.change.toFixed(2)}%` : ` ${imgItem.change.toFixed(2)}%`}
           </span>
         </p>
-        <p>{currencySymbol(currency)}{imgItem.price.toLocaleString('en-US')}</p>
+        <p >{currencySymbol(currency)}{imgItem.price.toLocaleString('en-US')}</p>
     </div>
     ))
         

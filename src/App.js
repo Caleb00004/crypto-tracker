@@ -11,6 +11,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import InvalidPath from './utils/InvalidPath';
 import { createGlobalStyle } from 'styled-components'
+import { fontColor } from './functions/fontColor';
 
 function App() {
   const {mode} = useContext(coinContext)
@@ -31,16 +32,8 @@ function App() {
   ` 
   }
   
-  function fontColor() {
-    if (mode === 'light') {
-        return 'black'
-    } else {
-        return 'white'
-    }
-}
-
   return (
-    <div style={{color: fontColor()}} className="App">
+    <div style={{color: fontColor(mode)}} className="App">
         <GlobalStyles />
         <Navbar />
 

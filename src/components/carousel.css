@@ -4,6 +4,7 @@
 
 .dark {
     color: white;
+
 }
 
 .light {
@@ -41,4 +42,7 @@
     .carousel-cell > img {
         width: 25%;
     }    
+    .carousel-cell > p {
+        font-size: 13px;
+    }
 }

@@ -1,4 +1,4 @@
-.grid-container {
+.grid-container-light, .grid-container-dark {
     display: grid;
     grid-template-columns: auto auto auto auto;
     margin: 3% 3%;
@@ -23,4 +23,8 @@
 
 .grid-item > P {
     font-size: clamp(0.7rem, 1.3vw, 1.3rem); 
+}
+
+.grid-container-dark > .grid-item > .grid-value {
+    font-weight: lighter;
 }

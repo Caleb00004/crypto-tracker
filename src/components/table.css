@@ -25,6 +25,10 @@
     cursor: pointer;
 }
 
+.active {
+    background-color: lightgray;
+    border-radius: 50%;
+}
 
 /* Styling Table*/
 .table-component {
@@ -97,6 +101,10 @@ span {
     border-bottom-style: solid;
     border-bottom-width: 1px;
     border-bottom-color: rgb(74, 72, 72);
+}
+
+.dark-table-body > tr > td {
+    font-weight: lighter;
 }
 
 .light-table-body > tr:hover {background-color: #ddd;}
