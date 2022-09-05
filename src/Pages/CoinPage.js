@@ -37,9 +37,9 @@ export default function CoinPage() {
                 <h1 style={coin.style}>{coinId.toUpperCase() } {coin.value}</h1>
                 
                 <br />
-                <Chart mode={mode} coinId={coinId}/>
+                <Chart mode={mode} coinId={coinId} error={error}/>
                 <br />
-                <CoinDetails mode={mode} coin={currentCoin[0]} currency={currency} error={error}/>
+                <CoinDetails mode={mode} coin={currentCoin[0]} currency={currency} />
              </div>
         )
     } else {

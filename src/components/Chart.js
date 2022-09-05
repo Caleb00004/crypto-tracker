@@ -8,7 +8,7 @@ export default function Chart ({mode, coinId, error}) {
 
     const [graphData, setGraphData] = React.useState()
     const [chartLoaded, setChartLoaded] = React.useState(false)
-
+    console.log(error)
     useEffect(() => {
         fetch(`https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=USD&days=1`)
         .then(response => response.json())
