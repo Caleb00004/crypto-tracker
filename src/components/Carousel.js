@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import Slider from "react-slick"; // importing slider librry. Can be installed with [npm install react-slick]
+import Slider from "react-slick"; // This is used to create the carousel. Can be installed with [npm install react-slick]
 import './carousel.css'
 import { currencySymbol } from "../functions/currencySymbol";
 
 export default function Carousel({coinData, mode, currency}) {
 
-    function sign(number) {
+    // function to determine color of 24h % change.
+    function chnageColor(number) {
       if (number > 0) {
           return {color: 'green'}
       } else if (number < 0){
@@ -13,11 +14,11 @@ export default function Carousel({coinData, mode, currency}) {
       }
     }
 
-    let imgLinks = []
+    // store 10 coinData to be displayed as a carousel.
+    let carouselData = []
 
     for (let i = 0; i <= 10; i++) {
-        //console.log(coinData[i])
-        imgLinks.push({
+        carouselData.push({
             img: coinData[i].image,
             name: coinData[i].symbol,
             change: coinData[i].price_change_percentage_24h,
@@ -25,20 +26,21 @@ export default function Carousel({coinData, mode, currency}) {
             id: coinData[i].id})
     }
   
-    
-    const carouselmg = imgLinks.map(imgItem => (
+    // mapping through carousel data    
+    const carouselmg = carouselData.map(imgItem => (
     <div key={imgItem.id} className='carousel-cell'>
         <img width={'35%'} src={imgItem.img}/>
         <p>
           {imgItem.name.toUpperCase()}
-          <span style={sign(imgItem.change)}>
+          <span style={chnageColor(imgItem.change)}>
             {imgItem.change > 0 ? ` +${imgItem.change.toFixed(2)}%` : ` ${imgItem.change.toFixed(2)}%`}
           </span>
         </p>
         <p >{currencySymbol(currency)}{imgItem.price.toLocaleString('en-US')}</p>
     </div>
     ))
-        
+    
+    // settings for the slider carousel 
     const settings = {
         infinite: true,
         autoplay: true,
