@@ -1,14 +1,10 @@
-.carousel {
-/*    margin-top: 2%; */
-}
-
 .dark {
     color: white;
-
 }
 
 .light {
     color: black;
+    background-color: rgb(250, 250, 250); 
 }
 
 .carousel > h1 {
@@ -20,10 +16,6 @@
     padding-top: 3%;
     padding-bottom: 3%;
 }
-
-.light {
-    background-color: rgb(250, 250, 250); 
-} 
 
 .carousel-cell {
 /*    background-color: blue;  */

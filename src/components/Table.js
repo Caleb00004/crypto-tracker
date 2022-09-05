@@ -4,28 +4,25 @@ import ReactPaginate from 'react-paginate';
 import { useNavigate } from 'react-router';
 import { currencySymbol } from '../functions/currencySymbol'
 import { fontColor } from '../functions/fontColor';
+import { changeColor } from '../functions/changeColor';
 
-// function component that generates and returns a table.
-// This component is called in th Paginated Items component
+export default function Table({ itemsPerPage, mode, coinData , currency }) {
 
-export default function PaginatedItems({ itemsPerPage, mode, coinData , currency }) {
-//const Items = ({ currentItems, mode, currency }) => {
-
-    const [itemList, setitemList] = useState(null);
-    const [pageCount, setPageCount] = useState(0);
-    const [itemOffset, setItemOffset] = useState(0);
-    const [formValue, setFormValue] = useState()
+    const [itemList, setitemList] = useState(null); // store current list of coins depending on current page
+    const [pageCount, setPageCount] = useState(0); 
+    const [itemOffset, setItemOffset] = useState(0); // store index of starting coin on a new page.
+    const [formValue, setFormValue] = useState("") // stores inputed value in search form
 
     // Used to navigate to a different Route. Passed to each Table element.
     const navigateTo = useNavigate()
     
     useEffect(() => {
-        // Fetch items from another resources.
-        const endOffset = itemOffset + itemsPerPage;
-        console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+        const endOffset = itemOffset + itemsPerPage; // store index of last coin on a page.
+
         setitemList(coinData.slice(itemOffset, endOffset));
         setPageCount(Math.ceil(coinData.length / itemsPerPage));
     }, [itemOffset, itemsPerPage, currency, coinData]);
+
 
     // Invoke when user click to request another page. 
     const handlePageClick = (event) => {
@@ -34,14 +31,6 @@ export default function PaginatedItems({ itemsPerPage, mode, coinData , currency
         setItemOffset(newOffset);
 
     }; 
-
-    function sign(number) {
-        if (number > 0) {
-            return {color: 'green'}
-        } else if (number < 0){
-            return {color: 'red'}
-        }
-    }
 
     // Mapping through the coinData State
     const coinElements = itemList && itemList.map(({image, symbol, current_price, price_change_percentage_24h, market_cap, market_cap_rank, id}) => {
@@ -65,7 +54,7 @@ export default function PaginatedItems({ itemsPerPage, mode, coinData , currency
                 <tr onClick={() => navigateTo(`/coin/${id}`)}>
                     <td className='img-row'><span className='number'>{market_cap_rank}</span> <img className='coin-icon' width={'25px'} src={image}/> <span className='coin-acronym'>{symbol.toUpperCase()}</span></td>
                     <td >{currencySymbol(currency)}{current_price.toLocaleString("en-US")}</td>
-                    <td style={sign(price_change_percentage_24h)}>
+                    <td style={changeColor(price_change_percentage_24h)}>
                         {price_change_percentage_24h > 0 ? `+${price_change_percentage_24h.toFixed(2)}% ` : `${price_change_percentage_24h.toFixed(2)}%`} 
                     </td>
                     <td>{currencySymbol(currency)}{sliceMarketCap}{MBT()}</td>
@@ -86,40 +75,29 @@ export default function PaginatedItems({ itemsPerPage, mode, coinData , currency
         'color': `${fontColor(mode)}`
     }   
     
-    function handleChange(event) {
-        console.log('handlechage')
+    function handleFilter(event) {
         setFormValue(event)
-        console.log(event)
 
-        let test = coinData.filter(dataItem => (
-//            dataItem.id.some(value => value.includes(event))
+        let filteredCoin = coinData.filter(dataItem => (
             dataItem.id.includes(event)
         ))
         
         if (event) {
-            console.log(test.length)
-            setitemList(test)
-        }
-
-        else {
-            console.log('ran')
+            setitemList(filteredCoin)
+        } else { // if input box is empty, set itemList back to normal.
             const endOffset = itemOffset + itemsPerPage;
             setitemList(coinData.slice(itemOffset, endOffset));
         }
-
-        console.log(test)
-
     }  
-//    console.log(coinData)
-//        console.log(formValue)
+
     return (
         <>
             <div className='table-component'>
                 <input 
-                    onChange={(e) => handleChange(e.target.value)}
+                    onChange={(e) => handleFilter(e.target.value)}
                     value={formValue}
                     style={inputStyle}
-                    placeholder='Search for a Coin...'>    
+                    placeholder='Search for Coin By Name...'>    
                 </input>
                 <table className={`${mode}-table`}>
                     <tbody>
@@ -156,66 +134,3 @@ export default function PaginatedItems({ itemsPerPage, mode, coinData , currency
         
     )
 }          
-
-/* 
-
-// Uses the Paginate library to generate paginated table of the Items function.
-export default function PaginatedItems({ itemsPerPage, mode, coinData, currency }) {
-//    const {mode, coinData} = useContext(coinContext)
-        // We start with an empty list of items.
-        console.log(`Page currency - ${currency}`)
-        const [currentItems, setCurrentItems] = useState(null);
-        const [pageCount, setPageCount] = useState(0);
-        // Here we use item offsets; we could also use page offsets
-        // following the API or data you're working with.
-        const [itemOffset, setItemOffset] = useState(0);
-
-        useEffect(() => {
-            console.log('useEffect ran')
-            // Fetch items from another resources.
-            const endOffset = itemOffset + itemsPerPage;
-            console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-            setCurrentItems(coinData.slice(itemOffset, endOffset));
-            setPageCount(Math.ceil(coinData.length / itemsPerPage));
-            console.log(currentItems)
-        }, [itemOffset, itemsPerPage]);
-
-        console.log('ran')
-
-        // Invoke when user click to request another page.
-        const handlePageClick = (event) => {
-            const newOffset = event.selected * itemsPerPage % coinData.length;
-            // console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
-            setItemOffset(newOffset);
-
-        }; 
-
-        return (
-        <>
-            <Items currentItems={currentItems} mode={mode} currency={currency}/>
-            <ReactPaginate
-            nextLabel=" >"
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={2}
-            marginPagesDisplayed={1}
-            pageCount={pageCount}
-            previousLabel="< "
-            pageClassName="page-item"
-            pageLinkClassName="page-link"
-            previousClassName="page-item"
-            previousLinkClassName="previous-link"
-            nextClassName="page-item"
-            nextLinkClassName="next-link"
-            breakLabel="..."
-            breakClassName="page-item"
-            breakLinkClassName="page-link"
-            containerClassName="pagination"
-            activeClassName="active"
-
-            />
-        </>
-        );
-
-}
-    
-*/

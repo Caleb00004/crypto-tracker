@@ -2,19 +2,11 @@ import React, { Component } from "react";
 import Slider from "react-slick"; // This is used to create the carousel. Can be installed with [npm install react-slick]
 import './carousel.css'
 import { currencySymbol } from "../functions/currencySymbol";
+import { changeColor } from "../functions/changeColor";
 
 export default function Carousel({coinData, mode, currency}) {
-
-    // function to determine color of 24h % change.
-    function chnageColor(number) {
-      if (number > 0) {
-          return {color: 'green'}
-      } else if (number < 0){
-          return {color: 'red'}
-      }
-    }
-
-    // store 10 coinData to be displayed as a carousel.
+  
+    // store 11 coinData to be displayed as a carousel.
     let carouselData = []
 
     for (let i = 0; i <= 10; i++) {
@@ -32,7 +24,7 @@ export default function Carousel({coinData, mode, currency}) {
         <img width={'35%'} src={imgItem.img}/>
         <p>
           {imgItem.name.toUpperCase()}
-          <span style={chnageColor(imgItem.change)}>
+          <span style={changeColor(imgItem.change)}>
             {imgItem.change > 0 ? ` +${imgItem.change.toFixed(2)}%` : ` ${imgItem.change.toFixed(2)}%`}
           </span>
         </p>

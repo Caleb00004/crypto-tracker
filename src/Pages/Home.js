@@ -1,5 +1,5 @@
 import Carousel from '../components/Carousel'
-import PaginatedItems from '../components/Table'
+import Table from '../components/Table'
 import { useContext } from 'react'
 import { coinContext } from '../coinContext'
 import LoadingSpinner from '../utils/LoadingSpinner'
@@ -15,7 +15,7 @@ export default function Home() {
             {dataLoaded ? <Carousel coinData={coinData} mode={mode} currency={currency}/> : <LoadingSpinner/>}
             <br />
             <h1>Coins Ranked By Market Cap</h1>
-            {dataLoaded ? <PaginatedItems itemsPerPage={10} mode = {mode} coinData={coinData} currency={currency}/> : <LoadingSpinner />}
+            {dataLoaded ? <Table itemsPerPage={10} mode = {mode} coinData={coinData} currency={currency}/> : <LoadingSpinner />}
         </div>
     )
 }
