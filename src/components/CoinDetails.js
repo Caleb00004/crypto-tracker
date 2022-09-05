@@ -6,7 +6,7 @@ export default function CoinDetails ({coin, mode, currency}) {
     return (
         <div className="coin-details">
             <hr />
-            <h1>Market Stats</h1>
+            <h1>Market Stats </h1>
             <div className={`grid-container-${mode}`}>
                 <div className='grid-item'>
                     <p className={`grid-header-${mode}`}>Market Cap: </p>
@@ -34,11 +34,11 @@ export default function CoinDetails ({coin, mode, currency}) {
                 </div>
                 <div className='grid-item'>
                     <p className={`grid-header-${mode}`}>High 24h: </p>
-                    <p className='grid-value' >{currencySymbol(currency)} {coin.high_24h}</p>
+                    <p className='grid-value' >{currencySymbol(currency)}{coin.high_24h.toLocaleString("en-US")}</p>
                 </div>
                 <div className='grid-item'>
                     <p className={`grid-header-${mode}`}>Low 24h:</p>
-                    <p className='grid-value' >{currencySymbol(currency)} {coin.low_24h}</p>
+                    <p className='grid-value' >{currencySymbol(currency)}{coin.low_24h.toLocaleString("en-US")}</p>
                 </div>
 
             </div>

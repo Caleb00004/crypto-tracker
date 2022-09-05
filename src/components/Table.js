@@ -1,6 +1,4 @@
 import './table.css'
-import { useContext } from 'react'
-import { coinContext } from '../coinContext'
 import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import { useNavigate } from 'react-router';
@@ -45,20 +43,37 @@ export default function PaginatedItems({ itemsPerPage, mode, coinData , currency
         }
     }
 
-    // Mapping through the coinData State/
-    const coinElements = itemList && itemList.map(({image, symbol, current_price, price_change_percentage_24h, market_cap, market_cap_rank, id}) => (
-        <tbody className={`${mode}-table-body`} key={id}>
-            <tr onClick={() => navigateTo(`/coin/${id}`)}>
-                <td className='img-row'><span className='number'>{market_cap_rank}</span> <img className='coin-icon' width={'25px'} src={image}/> <span className='coin-acronym'>{symbol.toUpperCase()}</span></td>
-                <td >{currencySymbol(currency)}{current_price.toLocaleString("en-US")}</td>
-                <td style={sign(price_change_percentage_24h)}>
-                    {price_change_percentage_24h > 0 ? `+${price_change_percentage_24h.toFixed(2)}% ` : `${price_change_percentage_24h.toFixed(2)}%`} 
-                </td>
-                <td>{currencySymbol(currency)}{market_cap.toLocaleString('en-US')}</td>
-            </tr> 
-        </tbody>
-    ))
-    
+    // Mapping through the coinData State
+    const coinElements = itemList && itemList.map(({image, symbol, current_price, price_change_percentage_24h, market_cap, market_cap_rank, id}) => {
+        let marketCap = market_cap.toLocaleString('en-US')
+        let sliceMarketCap = marketCap.slice(0, marketCap.indexOf(',')) 
+        let numberOfComma = (marketCap.match(/,/g) || []).length // count of number of comma in market cap
+        let M_B_T; // varible to store M[million], B[billion] or T[trillon] depending on number of comma's.
+
+        function MBT() {
+            if (numberOfComma == '2') {
+                return M_B_T = 'M'
+            } else if (numberOfComma == '3') {
+                return M_B_T = 'B'
+            } else if (numberOfComma == '4' ) {
+                return M_B_T = 'T'
+            }
+        }
+
+        return (
+            <tbody className={`${mode}-table-body`} key={id}>
+                <tr onClick={() => navigateTo(`/coin/${id}`)}>
+                    <td className='img-row'><span className='number'>{market_cap_rank}</span> <img className='coin-icon' width={'25px'} src={image}/> <span className='coin-acronym'>{symbol.toUpperCase()}</span></td>
+                    <td >{currencySymbol(currency)}{current_price.toLocaleString("en-US")}</td>
+                    <td style={sign(price_change_percentage_24h)}>
+                        {price_change_percentage_24h > 0 ? `+${price_change_percentage_24h.toFixed(2)}% ` : `${price_change_percentage_24h.toFixed(2)}%`} 
+                    </td>
+                    <td>{currencySymbol(currency)}{sliceMarketCap}{MBT()}</td>
+                </tr> 
+            </tbody>
+        )
+    })
+
     // Styling the Input tag
     const background = (mode == 'light') ? 'white' : 'black'
     const inputStyle = {

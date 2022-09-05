@@ -12,19 +12,40 @@ export default function CoinPage() {
     const {coinData, mode, dataLoaded, currency} = useContext(coinContext)
 
     if (dataLoaded) {
-        const coin = coinData.filter(data => data.id == coinId)
+        const currentCoin = coinData.filter(data => data.id == coinId)
 
-        console.log(coin[0])
+        let coin = {value: '', style: ''}
+
+        function coinStyle(number) {
+            if (number > 0) {
+                return coin = {
+                    value: `+${number}%`,
+                    style: {'color': 'green'}
+                }
+                // return `+${number}%`
+            } else {
+                return coin = {
+                    value: `${number}%`,
+                    style: {'color': 'red'}
+                }
+                // return `${number}%`
+            }
+        }
+        
+        coinStyle(currentCoin[0].price_change_percentage_24h)
+        console.log(coin)
+
+        console.log(currentCoin[0])
         //console.log(coinId)
         return (
             <div className='coin-page'>
-                <img src={coin[0].image}/>
-                <h1>{coinId.toUpperCase() }</h1>
+                <img src={currentCoin[0].image}/>
+                <h1 style={coin.style}>{coinId.toUpperCase() } {coin.value}</h1>
                 
                 <br />
                 <Chart mode={mode} coinId={coinId}/>
                 <br />
-                <CoinDetails mode={mode} coin={coin[0]} currency={currency}/>
+                <CoinDetails mode={mode} coin={currentCoin[0]} currency={currency}/>
              </div>
         )
     } else {

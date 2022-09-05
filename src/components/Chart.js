@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Line } from 'react-chartjs-2'
 import {Chart as ChartJS} from 'chart.js/auto' //apparently the chart code won't work without this import.
 import LoadingSpinner from '../utils/LoadingSpinner'
+import './chart.css'
 
 export default function Chart ({mode, coinId}) {
 
@@ -37,7 +38,7 @@ export default function Chart ({mode, coinId}) {
                       }),
                     
                     datasets: [{
-                        label: `${coinId} Chart`,
+                        label: `${coinId} (1 - day) Chart`,
                         data: graphData.map(dataItem => dataItem[1]),
                         borderColor: chartColor(),
                         pointRadius: 0,
@@ -47,7 +48,7 @@ export default function Chart ({mode, coinId}) {
                 }
         
                 return (
-                    <div style={{paddingLeft: '15px', paddingRight: '15px'}}>
+                    <div className='chart' >
                         <Line data={chartData} /> 
                     </div>
                 )

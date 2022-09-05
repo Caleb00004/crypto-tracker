@@ -21,12 +21,13 @@ export default function Carousel({coinData, mode, currency}) {
             img: coinData[i].image,
             name: coinData[i].symbol,
             change: coinData[i].price_change_percentage_24h,
-            price: coinData[i].current_price})
+            price: coinData[i].current_price,
+            id: coinData[i].id})
     }
   
     
     const carouselmg = imgLinks.map(imgItem => (
-    <div className='carousel-cell'>
+    <div key={imgItem.id} className='carousel-cell'>
         <img width={'35%'} src={imgItem.img}/>
         <p>
           {imgItem.name.toUpperCase()}

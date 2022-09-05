@@ -4,7 +4,7 @@
 /*    border: 1px solid limegreen !important; */
     text-decoration: none;
     font-family: 'inter';
-/*    font-weight: bold; */
+    font-weight: lighter
 }
 
 nav {
@@ -86,7 +86,7 @@ li {
   
 /* Add a grey background color to dropdown links on hover */
 .dropdown-content a:hover {
-background-color: #0945c4;
+background-color: lightgray;
 }
   
 /* Show the dropdown menu on hover */
