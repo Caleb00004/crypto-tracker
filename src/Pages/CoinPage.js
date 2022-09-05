@@ -9,12 +9,12 @@ import './coinpage.css'
 export default function CoinPage() {
 
     const {coinId} = useParams() //getting current coin Param from url
-    const {coinData, mode, dataLoaded, currency} = useContext(coinContext)
+    const {coinData, mode, dataLoaded, currency, error} = useContext(coinContext)
 
     if (dataLoaded) {
         const currentCoin = coinData.filter(data => data.id == coinId)
 
-        let coin = {value: '', style: ''} // TO store current coin name an style
+        let coin = {value: '', style: ''} // TO store current coin 24h% change value and style
         function coinStyle(number) {
             if (number > 0) {
                 return coin = {
@@ -39,11 +39,11 @@ export default function CoinPage() {
                 <br />
                 <Chart mode={mode} coinId={coinId}/>
                 <br />
-                <CoinDetails mode={mode} coin={currentCoin[0]} currency={currency}/>
+                <CoinDetails mode={mode} coin={currentCoin[0]} currency={currency} error={error}/>
              </div>
         )
     } else {
-        <LoadingSpinner />
+        <LoadingSpinner errorOccured={error}/>
     }
 
 }

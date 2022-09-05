@@ -5,9 +5,10 @@ const coinContext = React.createContext()
 
 function ContextProvider(props) {
     const [coinData, setCoinData] = React.useState([])
-    const [dataLoaded, setDataLoaded] = React.useState(false) //check if api data has being fetched
+    const [dataLoaded, setDataLoaded] = React.useState(false) //To check if api data has being fetched
     const [mode, setMode] = React.useState('light')
     const [currency, setCurrency] = React.useState('USD')
+    const [error, setError] = React.useState(false)
 
     const toggleMode = () => {
         setMode(prevMode => prevMode === 'dark' ? 'light' : 'dark')
@@ -26,13 +27,13 @@ function ContextProvider(props) {
                 setDataLoaded(true),
                 setCoinData(data))
             )
-            .catch(err => console.error(err));
+            .catch(err => setError(true));
     },[currency])
 
 //    console.log(coinData)
     
     return (
-        <coinContext.Provider value={{coinData, dataLoaded, mode, toggleMode, currency, changeCurrency}}>
+        <coinContext.Provider value={{coinData, dataLoaded, mode, toggleMode, currency, changeCurrency, error}}>
             {props.children}
         </coinContext.Provider>
     )

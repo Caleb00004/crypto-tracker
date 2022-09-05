@@ -10,7 +10,7 @@ export default function Navbar() {
     
     let themeImg = (mode == 'light') ? moonfill : sunline
 
-    // function to determine font color for DropDOwn 
+    // function to determine font color for DropDown 
     const fontColor = () => {
         if (mode === 'light') {
             return 'black'
@@ -19,6 +19,7 @@ export default function Navbar() {
         }
     }
 
+    // function to determine dropdown li elements based on current currency
     function currencySelect(call) {
         if (currency == 'USD') {
             return call == '2nd' ? 'EUR' : 'NGN'
@@ -31,7 +32,7 @@ export default function Navbar() {
 
     return (
         <nav className={`${mode}-nav`}>
-            <li><Link  className={`${mode}-Header-nav`} to = '/'>Coin Tracker</Link></li>
+            <li><Link  className={`${mode}-Header-nav`} to = '/'>Crypto Tracker</Link></li>
             <div className = {`${mode}-far-right`}>
                 <img className='nav-icon' width={'15px'} height={'20px'} src={themeImg} onClick={toggleMode}/>
                     <div className="dropdown">

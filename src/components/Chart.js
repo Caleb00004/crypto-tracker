@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { Line } from 'react-chartjs-2'
-import {Chart as ChartJS} from 'chart.js/auto' //apparently the chart code won't work without this import.
+import {Chart as ChartJS} from 'chart.js/auto' //apparently the chart.js code won't work without this import.
 import LoadingSpinner from '../utils/LoadingSpinner'
 import './chart.css'
 
-export default function Chart ({mode, coinId}) {
+export default function Chart ({mode, coinId, error}) {
 
     const [graphData, setGraphData] = React.useState()
     const [chartLoaded, setChartLoaded] = React.useState(false)
@@ -17,15 +17,13 @@ export default function Chart ({mode, coinId}) {
             setGraphData(data.prices))
         )
     },[])
-
-//    console.log(graphData)
-//    console.log(mode)
     
     function chartColor() {
         return mode === 'light' ? '#1414d8' : 'green'
     } 
 
     const [days, setDays] = React.useState(1);
+    
         if (chartLoaded) {
             const chartData = {
                     labels: graphData.map((coin) => {
@@ -53,7 +51,7 @@ export default function Chart ({mode, coinId}) {
                     </div>
                 )
         } else {
-            return <LoadingSpinner />
+            return <LoadingSpinner errorOccured={error}/>
         }
 }
 

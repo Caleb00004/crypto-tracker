@@ -52,7 +52,7 @@ export default function Table({ itemsPerPage, mode, coinData , currency }) {
         return (
             <tbody className={`${mode}-table-body`} key={id}>
                 <tr onClick={() => navigateTo(`/coin/${id}`)}>
-                    <td className='img-row'><span className='number'>{market_cap_rank}</span> <img className='coin-icon' width={'25px'} src={image}/> <span className='coin-acronym'>{symbol.toUpperCase()}</span></td>
+                    <td className='img-row'><span className='number'>{market_cap_rank}</span> <img alt='coin Icon' className='coin-icon' width={'25px'} src={image}/> <span className='coin-acronym'>{symbol.toUpperCase()}</span></td>
                     <td >{currencySymbol(currency)}{current_price.toLocaleString("en-US")}</td>
                     <td style={changeColor(price_change_percentage_24h)}>
                         {price_change_percentage_24h > 0 ? `+${price_change_percentage_24h.toFixed(2)}% ` : `${price_change_percentage_24h.toFixed(2)}%`} 
