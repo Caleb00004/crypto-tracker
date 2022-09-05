@@ -66,9 +66,10 @@ export default function Table({ itemsPerPage, mode, coinData , currency }) {
     // Styling the Input tag
     const background = (mode == 'light') ? 'white' : 'black'
     const inputStyle = {
-        'width': '100%',
-        'paddingTop': '5px',
-        'paddingBottom' : '5px',
+        'width': '98%',
+        'paddingTop': '7px',
+        'paddingBottom' : '7px',
+        'paddingLeft' : '8px',
         'marginBottom': '20px',
         'backgroundColor': `${background}`,
         'border': '1px solid black',
@@ -79,7 +80,7 @@ export default function Table({ itemsPerPage, mode, coinData , currency }) {
         setFormValue(event)
 
         let filteredCoin = coinData.filter(dataItem => (
-            dataItem.id.includes(event)
+            dataItem.id.includes(event.toLowerCase())
         ))
         
         if (event) {

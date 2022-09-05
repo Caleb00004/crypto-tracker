@@ -1,12 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@402&family=Karla:wght@200&display=swap');
-
-* {
-/*    border: 1px solid limegreen !important; */
-    text-decoration: none;
-    font-family: 'inter';
-    font-weight: lighter
-}
-
 nav {
     display: inline-flex;
     width: 100%;

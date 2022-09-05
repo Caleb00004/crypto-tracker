@@ -2,14 +2,11 @@
 .pagination {
     display: flex;
     padding-bottom: 20px;
-/*    background-color: red; */
     padding-right: 30%;
     padding-left: 30%;
-/*    margin-top: 10px;  */
 }
 
 .page-item {
-/*    background-color: blue; */
     margin-left: auto;
     margin-right: auto;
     padding: 1%;
@@ -19,7 +16,6 @@
 }
 
 .page-link {
-/*    background-color: blue;  */
     color: green;
     padding: 6px 6px;
     cursor: pointer;
@@ -29,6 +25,7 @@
     background-color: rgb(142, 142, 142);
     border-radius: 50%;
 }
+
 
 /* Styling Table*/
 .table-component {
@@ -81,12 +78,6 @@ span {
     border-bottom-width: 0.1px;
     border-bottom-color: #b7b3b3;
 }
-/*
-.light-table-body > tr > th, td{
-    border: 1px solid;
-    padding: 10px;
-}
-*/
 
 .dark-table {
     border-collapse: collapse;
@@ -110,12 +101,6 @@ span {
 .light-table-body > tr:hover {background-color: #ddd;}
 .dark-table-body > tr:hover {background-color: rgb(69, 66, 66);}
 
-
-/* tr:nth-child(odd){background-color: #f2f2f2;} */
-/* .light-table-body:nth-child(even), tr:nth-child(even) {
-    background-color: #f2f2f2;;
-} */
-
 @media screen and (max-width: 600px) {
     th, tr, td {
         padding: 13px;
@@ -134,29 +119,6 @@ span {
     .page-item {
         padding: 1px;
     }
-
-    /*
-    .page-item {
-/*        background-color: navajowhite;
-        width: 15px; *
-        width: 1%;
-    }
-        
-    .page-link {
-        background-color: blue;  
-        padding: 6px 6px;       
-    }
-
-    .previous-link {
-        font-size: 12px;
-        display: flex;
-        width: 1500%;
-        position: relative;
-        margin-right: 10px;
-    }
-*/
-
-
 
 }
 
