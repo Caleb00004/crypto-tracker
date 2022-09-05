@@ -18,8 +18,8 @@ export default function Chart ({mode, coinId}) {
         )
     },[])
 
-    console.log(graphData)
-    console.log(mode)
+//    console.log(graphData)
+//    console.log(mode)
     
     function chartColor() {
         return mode === 'light' ? '#1414d8' : 'green'

@@ -1,5 +1,4 @@
 import Carousel from '../components/Carousel'
-//import Table from '../components/Table'
 import PaginatedItems from '../components/Table'
 import { useContext } from 'react'
 import { coinContext } from '../coinContext'
@@ -7,7 +6,7 @@ import LoadingSpinner from '../utils/LoadingSpinner'
 import './home.css'
 
 export default function Home() {
-    const {coinData, dataLoaded, mode, currency} = useContext(coinContext) 
+    const {coinData, dataLoaded, mode, currency} = useContext(coinContext) //pulling data fron context.
     console.log('HOME')
 
     return (

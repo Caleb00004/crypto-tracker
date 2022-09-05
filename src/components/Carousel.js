@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Slider from "react-slick";
+import Slider from "react-slick"; // importing slider librry. Can be installed with [npm install react-slick]
 import './carousel.css'
 import { currencySymbol } from "../functions/currencySymbol";
 
