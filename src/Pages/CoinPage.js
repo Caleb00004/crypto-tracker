@@ -8,35 +8,29 @@ import './coinpage.css'
 
 export default function CoinPage() {
 
-    const {coinId} = useParams()
+    const {coinId} = useParams() //getting current coin Param from url
     const {coinData, mode, dataLoaded, currency} = useContext(coinContext)
 
     if (dataLoaded) {
         const currentCoin = coinData.filter(data => data.id == coinId)
 
-        let coin = {value: '', style: ''}
-
+        let coin = {value: '', style: ''} // TO store current coin name an style
         function coinStyle(number) {
             if (number > 0) {
                 return coin = {
                     value: `+${number}%`,
                     style: {'color': 'green'}
                 }
-                // return `+${number}%`
             } else {
                 return coin = {
                     value: `${number}%`,
                     style: {'color': 'red'}
                 }
-                // return `${number}%`
             }
         }
         
         coinStyle(currentCoin[0].price_change_percentage_24h)
-        console.log(coin)
 
-        console.log(currentCoin[0])
-        //console.log(coinId)
         return (
             <div className='coin-page'>
                 <img src={currentCoin[0].image}/>
