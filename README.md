@@ -3,7 +3,7 @@
 
 ## About
   This is a real time crypto currency Tracker App, that can be used to check current prices of popular crypto currencies and also to see the charts. It displays the current price of crypto coins in 3 different currenecies: The US dollars (USD), The Euro (EUR) and The Nigerian naira (NGN).
-  It comes with 2 themed design, a Dark and Light Mode.  
+  It also comes with 2 design themes for a Dark and Light Mode.  
 
 ## Dependencies
 - React Router
